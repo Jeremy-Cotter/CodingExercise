@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<sub-flow name="postDataSub_Flow" doc:id="79f47f61-8509-4fdf-a4bc-77ebf7eb9831" >
+		<db:insert config-ref="Database_Config" doc:name="Database Insert Message">
+			<db:sql><![CDATA[INSERT INTO tradeline(id, creditorName, firstName, lastName, minPaymentPercentage, balance)
+VALUES (:id, :creditorName, :firstName, :lastName, :minPaymentPercentage, :balance)
+]]></db:sql>
+				<db:input-parameters ><![CDATA[#[{'id':payload.id, 'creditorName':payload.creditorName, 'firstName':payload.firstName, 'lastName':payload.lastName, 'minPaymentPercentage':payload.minPaymentPercentage, 'balance':payload.balance}]]]></db:input-parameters>
+
+</db:insert>
+		<ee:transform doc:name="Response Message" doc:id="88979c04-f0ca-49af-9e66-3ef5241ce1d5">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Message":"Data Successfully Inserted"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+</mule>

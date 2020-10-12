@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<sub-flow name="gatherDataSub_Flow" doc:id="c3453dd7-81e9-41da-b6b1-a25b0401b53c" >
+		<ee:transform doc:name="ReadURL Json Data" doc:id="5ce05037-4a08-4d6e-a9e5-bd1cd6c885a4" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+readUrl("https://raw.githubusercontent.com/StrategicFS/Recruitment/master/data.json")]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<foreach doc:name="For Each" doc:id="42374948-d526-4469-98f5-8c2a705ba3b1" collection="#[payload]">
+			<db:insert config-ref="Database_Config" doc:name="Database Insert Statement">
+			<db:sql><![CDATA[INSERT INTO tradeline(id, creditorName, firstName, lastName, minPaymentPercentage, balance)
+VALUES (:id, :creditorName, :firstName, :lastName, :minPaymentPercentage, :balance)
+]]></db:sql>
+				<db:input-parameters ><![CDATA[#[{'id':payload.id, 'creditorName':payload.creditorName, 'firstName':payload.firstName, 'lastName':payload.lastName, 'minPaymentPercentage':payload.minPaymentPercentage, 'balance':payload.balance}]]]></db:input-parameters>
+
+</db:insert>
+		</foreach>
+		<ee:transform doc:name="Response Message" doc:id="8733bce5-388d-44bb-8700-8cb098b1a52b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Message": "Data Successfully Imported"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+</mule>

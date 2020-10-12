@@ -1,0 +1,15 @@
+#%RAML 1.0 ResourceType
+post:
+  description: Insert data into the Database
+  body:
+    application/json:
+      example: !include ../examples/postDataExampleRQ.json
+      type: !include ../schemas/postDataSchemaRQ.json
+
+  responses:
+    200: 
+      body:
+        application/json:
+          example: !include ../examples/postDataExampleRS.json
+          type: !include ../schemas/postDataSchemaRS.json
+            

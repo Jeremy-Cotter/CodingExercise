@@ -1,0 +1,15 @@
+#%RAML 1.0 ResourceType
+put:
+  description: Change data in the Database
+  body:
+    application/json:
+      example: !include ../examples/putDataExampleRQ.json
+      type: !include ../schemas/putDataSchemaRQ.json
+
+  responses:
+    200: 
+      body:
+        application/json:
+          example: !include ../examples/putDataExampleRS.json
+          type: !include ../schemas/putDataSchemaRS.json
+            

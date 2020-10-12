@@ -1,0 +1,31 @@
+#%RAML 1.0
+title: sys-database
+version: 1.0
+mediaType: 
+- application/json
+
+protocols:
+  - HTTP
+  - HTTPS
+
+documentation:
+  - title: sys-database
+    content: sys-database is an REST API that perfrom CRUD Operations. This API will be able to retrieve data from a JSON endpoint, update, delete and add different tradelines.
+
+resourceTypes:
+  gather-Data: !include resourceTypes/gather-Data.raml
+  get-Data: !include resourceTypes/get-Data.raml
+  post-Data: !include resourceTypes/post-Data.raml
+  put-Data: !include resourceTypes/put-Data.raml
+  delete-Data: !include resourceTypes/delete-Data.raml
+
+/gatherData:
+  type: gather-Data
+/getData:
+  type: get-Data
+/postData:
+  type: post-Data
+/putData:
+  type: put-Data
+/deleteData:
+  type: delete-Data

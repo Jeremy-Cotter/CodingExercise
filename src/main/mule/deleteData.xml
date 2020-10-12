@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<sub-flow name="deleteDataSub_Flow" doc:id="131e6fff-0632-4116-a048-bbdc558cd5c9" >
+		<db:delete doc:name="Database Delete Statement" doc:id="d6d215f5-ccdd-4b02-95d2-8f685eee71c4" config-ref="Database_Config">
+			<db:sql ><![CDATA[DELETE FROM tradeline WHERE id= :id AND creditorName = :creditorName AND firstName = :firstName AND lastName =:lastName AND minPaymentPercentage = :minPaymentPercentage AND balance =:balance]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{'id':payload.id, 'creditorName': payload.creditorName, 'firstName': payload.firstName, 'lastName':payload.lastName, 'minPaymentPercentage':payload.minPaymentPercentage, 'balance': payload.balance}]]]></db:input-parameters>
+		</db:delete>
+		<ee:transform doc:name="Response Message" doc:id="354ce9a3-a45b-47a9-a450-890c5e91adcb">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Message":"Data Successfully Deleted"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+</mule>

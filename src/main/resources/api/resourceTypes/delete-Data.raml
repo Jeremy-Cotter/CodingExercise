@@ -1,0 +1,10 @@
+#%RAML 1.0 ResourceType
+delete:
+  description: Delete a Tradeline
+  responses:
+    200: 
+      body:
+        application/json:
+          example: !include ../examples/deleteDataExampleRS.json
+          type: !include ../schemas/deleteDataSchemaRS.json
+            

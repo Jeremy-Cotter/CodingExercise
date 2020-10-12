@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="getData" format="json">
+      <types:shape format="json-schema" location="api/schemas/getDataSchemaRS.json"/>
+    </types:type>
+    <types:type name="getDatas" format="json">
+      <types:shape format="weave" example="api/examples/getDataExampleRS.json"><![CDATA[%dw 2.0
+
+type getDatas = Array<{|  id: Number {"typeId": "int"},   creditorName: String,   firstName: String,   lastName: String,   minPaymentPercentage: Number {"typeId": "double"},   balance: Number {"typeId": "double"}|}> {"example": "[{\\\"id\\\":1,\\\"creditorName\\\":\\\"CBNA\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":2.00,\\\"balance\\\":1363.00},{\\\"id\\\":2,\\\"creditorName\\\":\\\"AMEX\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":2.00,\\\"balance\\\":2763.00},{\\\"id\\\":3,\\\"creditorName\\\":\\\"AMEX\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":2.00,\\\"balance\\\":429.00},{\\\"id\\\":4,\\\"creditorName\\\":\\\"AMEX\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":2.00,\\\"balance\\\":1363.00},{\\\"id\\\":5,\\\"creditorName\\\":\\\"DISCOVERBANK\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":2.00,\\\"balance\\\":2644.00},{\\\"id\\\":6,\\\"creditorName\\\":\\\"CAPITAL ONE\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":4.00,\\\"balance\\\":5464.00},{\\\"id\\\":7,\\\"creditorName\\\":\\\"CAPITAL ONE\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":4.00,\\\"balance\\\":2345.00},{\\\"id\\\":8,\\\"creditorName\\\":\\\"CAPITAL ONE\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":4.00,\\\"balance\\\":836.00},{\\\"id\\\":9,\\\"creditorName\\\":\\\"CBNA\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":3.50,\\\"balance\\\":687.00},{\\\"id\\\":10,\\\"creditorName\\\":\\\"CBNA\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":3.50,\\\"balance\\\":235.00}]"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="deleteData" format="json">
+      <types:shape format="weave" example="api/examples/deleteDataExampleRS.json"><![CDATA[%dw 2.0
+
+type deleteData = {|
+  Message: String, 
+  id: Number {"typeId": "int"}, 
+  creditorName: String, 
+  firstName: String, 
+  lastName: String, 
+  minPaymentPercentage: Number {"typeId": "double"}, 
+  balance: Number {"typeId": "double"}
+|} {"example": "{\\\"Message\\\":\\\"Following Data Deleted\\\",\\\"id\\\":1,\\\"creditorName\\\":\\\"CBNA\\\",\\\"firstName\\\":\\\"Suman\\\",\\\"lastName\\\":\\\"Tester79\\\",\\\"minPaymentPercentage\\\":2.00,\\\"balance\\\":1363.00}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#348d5a9c-4f0a-4374-b4f2-9a6b71b2f1a9">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="getDatas"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#354ce9a3-a45b-47a9-a450-890c5e91adcb">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="deleteData"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

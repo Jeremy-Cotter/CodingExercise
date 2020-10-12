@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<sub-flow name="putDataSub_Flow" doc:id="75158020-f8f5-4fc4-aa32-0fee6786460f" >
+		<db:update doc:name="Database Update Statement" doc:id="9e6a4f49-537a-45d8-816c-ee83968419c0" config-ref="Database_Config">
+			<db:sql ><![CDATA[UPDATE tradeline SET creditorName = :creditorName, firstName = :firstName, lastName = :lastName, minPaymentPercentage = :minPaymentPercentage, balance = :balance
+WHERE id = :id 
+]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{'id':payload.id, 'creditorName':payload.creditorName, 'firstName':payload.firstName, 'lastName':payload.lastName, 'minPaymentPercentage':payload.minPaymentPercentage, 'balance':payload.balance}]]]></db:input-parameters>
+		</db:update>
+		<ee:transform doc:name="Response Message" doc:id="aa96a9a5-9176-425e-9978-e7bffe6a74a1" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Message": "Data has been successfully changed!"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+</mule>

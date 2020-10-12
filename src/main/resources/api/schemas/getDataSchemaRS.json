@@ -1,0 +1,319 @@
+
+
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "creditorName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "minPaymentPercentage": {
+          "type": "number"
+        },
+        "balance": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "creditorName",
+        "firstName",
+        "lastName",
+        "minPaymentPercentage",
+        "balance"
+      ]
+    }
+  ]
+}
+
